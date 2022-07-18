@@ -4,7 +4,6 @@ class Products {
     this.labelAdd = "добавить в корзину";
     this.labelRemove = "удалить из корзины";
   }
-
   hanleSetLocationStorage(element, id) {
     const { pushProduct, products } = localStorageUtil.putProducts(id);
     if (pushProduct) {
@@ -33,21 +32,22 @@ class Products {
 
       htmlCatalog += `
     <li class ='products-element'>
-    <span class ='products-element__name'>${name}</span>
-    <img src="${img}" alt="" class ='products-element__img'>
+      <span class ='products-element__name'>${name}</span>
+      <img src="${img}" alt="" class ='products-element__img'>
    
-    <span class ='products-element__price'>⚡️${price.toLocaleString()} KG</span>
-    <button class ='products-element__btn${activeClass}'
-     onclick ="productsPage.hanleSetLocationStorage(this, '${id}');"
-     >${activeText}
-     </button>
+      <span class ='products-element__price'>⚡️${price.toLocaleString()} KG</span>
+      <button class ='products-element__btn${activeClass}'
+        onclick ="productsPage.hanleSetLocationStorage(this, '${id}');"
+        >${activeText}
+      </button>
     </li>
     `;
     });
-    // console.log(name, price, img);
+
+    // console.log(name, price, im g);
     const html = `
 <ul class = "products-container">
-${htmlCatalog}
+    ${htmlCatalog}
 </ul>
 `;
     ROOT_PRODUCTS.innerHTML = html;
@@ -55,3 +55,5 @@ ${htmlCatalog}
 }
 
 const productsPage = new Products();
+
+productsPage.render();

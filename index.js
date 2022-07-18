@@ -6,8 +6,16 @@ function render() {
 
   // products
   productsPage.render();
-  console.log("fs");
 }
-render();
 
-// let CATALOG = [];
+let CATALOG = [];
+
+fetch("http://localhost:3000/posts")
+  .then((res) => res.json())
+  .then((body) => {
+    CATALOG = body;
+    render();
+  })
+  .catch((error) => {
+    console.log(error);
+  });
